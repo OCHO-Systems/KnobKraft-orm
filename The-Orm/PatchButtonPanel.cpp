@@ -123,10 +123,10 @@ void PatchButtonPanel::resized()
 	}
 	fb.performLayout(getLocalBounds().toFloat());*/
 	Rectangle<int> area(getLocalBounds());
-	pageNumbers_.setBounds(area.removeFromBottom(20));
-	pageDown_.setBounds(area.removeFromLeft(32).withTrimmedRight(8));
-	pageUp_.setBounds(area.removeFromRight(32).withTrimmedLeft(8));
-
+	auto lowerRow = area.removeFromBottom(40).withTrimmedTop(8);
+	pageDown_.setBounds(lowerRow.removeFromLeft(132).withTrimmedRight(8));
+	pageUp_.setBounds(lowerRow.removeFromRight(132).withTrimmedLeft(8));
+	pageNumbers_.setBounds(lowerRow);
 	patchButtons_->setBounds(area);
 }
 
