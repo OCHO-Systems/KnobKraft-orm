@@ -7,6 +7,8 @@
 # Note that for real life usage the native C++ implementation of the Matrix1000 is more powerful and should be used
 # This is an example adaption to show how a fully working adaption can look like
 
+import hashlib
+
 
 def name():
     return "Matrix 1000 Adaption"
@@ -81,6 +83,10 @@ def isSingleProgramDump(message):
             and message[1] == 0x10  # Oberheim
             and message[2] == 0x06  # Matrix
             and message[3] == 0x01)  # Single Patch Data
+
+
+def calculateFingerprint(message):
+    return hashlib.md5(bytearray(message)).hexdigest()
 
 
 def nameFromDump(message):
